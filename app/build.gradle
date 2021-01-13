@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.baseproject"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    /*Android Support*/
+    implementation deps.androidx.app_compat
+    implementation deps.androidx.recyclerview
+    implementation deps.androidx.swiperefreshlayout
+    implementation deps.material
+    implementation deps.constraint_layout
+    implementation deps.androidx.annotations
+    implementation deps.androidx.exifinterface
+    implementation deps.androidx.core_utils
+
+    /*Extension*/
+    implementation deps.fragment
+    implementation deps.fragment_ktx
+    implementation deps.core_ktx
+    implementation deps.activity_ktx
+    implementation deps.collection_ktx
+
+    /*Lifecycle Android Jetpack*/
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.java8
+    implementation 'androidx.annotation:annotation:1.2.0-alpha01'
+
+    annotationProcessor deps.lifecycle.compiler
+    kapt deps.lifecycle.compiler
+
+    /*Paging Android Jetpack*/
+    implementation deps.paging
+
+    /*Room Android Jetpack*/
+    implementation deps.room.runtime
+    annotationProcessor deps.room.compiler
+    kapt deps.room.compiler
+
+    /*Work Manager Android Jetpack*/
+    implementation deps.work.work_runtime
+    implementation deps.work.work_runtime_ktx
+    implementation deps.work.work_rxjava2
+
+    /*Glide*/
+    implementation(deps.glide.glide) {
+        exclude group: "com.android.support"
+    }
+    implementation deps.glide.annotations
+
+    annotationProcessor deps.glide.compiler
+    kapt deps.glide.compiler
+
+    /*Dagger*/
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+
+    annotationProcessor deps.dagger.android_support_compiler
+    kapt deps.dagger.android_support_compiler
+    annotationProcessor deps.dagger.compiler
+    kapt deps.dagger.compiler
+
+}
