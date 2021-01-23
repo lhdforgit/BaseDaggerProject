@@ -3,7 +3,7 @@
     package="com.example.baseproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:name=".presentation.MyApplication"
@@ -20,6 +20,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="face" />
+        <!-- To use multiple models: android:value="face,model2,model3" -->
+
+
+        <activity android:name=".presentation.face.FaceDetectAct" />
+
+        <service android:name=".presentation.main.ServiceMain"/>
+
     </application>
 
 </manifest>

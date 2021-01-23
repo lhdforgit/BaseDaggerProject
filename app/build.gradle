@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
@@ -99,5 +100,23 @@ dependencies {
     implementation deps.okhttp.okhttp_logging_interceptor
     implementation deps.okhttp.okhttp
     implementation deps.timber
+
+    /*Firebase*/
+    implementation deps.firebase.firebase_messaging
+    implementation deps.firebase.firebase_dynamic_links
+    implementation deps.firebase.firebase_analytics
+    implementation deps.firebase.firebase_config
+
+    /*Google Play Service*/
+    implementation deps.google_service.play_core
+    implementation deps.google_service.play_services_maps
+    implementation deps.google_service.play_services_places
+    implementation deps.google_service.play_services_location
+    implementation deps.google_service.play_services_base
+    implementation deps.google_service.play_services_gcm
+    implementation deps.google_service.play_services_basement
+
+    implementation deps.google_service.vision
+    implementation deps.google_service.vision_face_model
 
 }
